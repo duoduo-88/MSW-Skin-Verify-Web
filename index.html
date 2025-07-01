@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>MSW 第三方造型防僞驗證</title>
+  <title>MSW第三方造型防僞驗證 MSW third party skin anti-counterfeiting verification</title>
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
     html, body {
@@ -30,8 +30,25 @@
 
     h1 {
       white-space: nowrap;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.15em;
       color: #000;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      color: #444;
+      margin-top: 0.15em;
+      margin-bottom: 0.8em;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .warning-static {
+      color: #d8000c;
+      font-size: 0.85em;
+      margin-bottom: 1em;
     }
 
     form {
@@ -43,7 +60,8 @@
     }
 
     input, button {
-      width: 50%;
+      width: 100%;
+      max-width: 320px;
       padding: 0 16px;
       margin: 0.5em 0;
       font-size: 1.1em;
@@ -128,15 +146,19 @@
 </head>
 <body>
   <div id="container">
-    <h1>MSW 第三方造型防僞驗證</h1>
+    <h1>MSW 第三方造型防僞驗證</h1><br />
+    <div class="subtitle">MSW third party skin anti-counterfeiting verification</div>
+    <div class="warning-static">
+      提醒：可能會有僞造驗證網頁，驗證前請確認於原作者取得此驗證網址。
+    </div>
     <form id="form">
-      <input type="text" id="code" placeholder="請輸入唯一代碼" required maxlength="10" />
+      <input type="text" id="code" placeholder="請輸入唯一代碼 含 # 字號" required maxlength="10" />
       <div class="h-captcha" data-sitekey="04ac61c8-94ba-41f0-94a0-e92ccaf2c13a"></div>
-      <button type="submit">查詢</button>
+      <button type="submit">驗證</button>
     </form>
     <div id="result"></div>
     <p class="footer">
-      若查詢有疑問可前往：<a href="https://discord.com/channels/1298161198889435166/1371457783295246426" target="_blank" rel="noopener noreferrer">Discord Artale 中文玩家社群</a><br>
+      若查詢有疑問可前往：<a href="https://discord.com/channels/1298161198889435166/1371457783295246426" target="_blank" rel="noopener noreferrer">聯繫 DuoDuo 造型作者</a><br>
       DuoDuo造型只在 <a href="https://discord.com/channels/1298161198889435166/1371457783295246426" target="_blank" rel="noopener noreferrer">Discord Artale 中文玩家社群</a> 販售，無委託代理販售。
     </p>
   </div>
@@ -175,7 +197,7 @@
         return;
       }
 
-      setResult('查詢中...');
+      setResult('驗證中...');
 
       try {
         const res = await fetch('https://verify-proxy.jianjumail.workers.dev/', {
