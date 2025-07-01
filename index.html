@@ -105,6 +105,7 @@
       margin-top: 1em;
       font-weight: bold;
       min-height: 2em;
+      white-space: normal;
     }
 
     #result.success {
@@ -175,7 +176,7 @@
 
     function setResult(message, type = '') {
       result.className = type;
-      result.innerHTML = message.split('\n').map((line, idx) => idx === 1 ? `<div style="margin-top: 0.5em;">${line}</div>` : `<div>${line}</div>`).join('');
+      result.innerHTML = message.replace(/\n/g, '<br>');
     }
 
     form.addEventListener('submit', async e => {
