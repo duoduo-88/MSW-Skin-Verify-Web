@@ -217,6 +217,9 @@
         else if (isWarning) setResult(data, 'warning');
         else setResult(data);
 
+        // 驗證後清空輸入框
+        document.getElementById('code').value = '';
+
         hcaptcha.reset();
       } catch (error) {
         setResult('查詢失敗，請稍後再試', 'error');
